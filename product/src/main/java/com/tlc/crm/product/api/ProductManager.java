@@ -72,13 +72,22 @@ public class ProductManager implements ConfigManager<Product> {
 
         for (final Product product : models) {
             final Row row = new Row(TABLE);
-
-            row.set(PRODUCTDETAILS.PRODUCTNAME, product.getProductName());
-            row.set(PRODUCTDETAILS.PRICE, product.getPrice());
-            row.set(PRODUCTDETAILS.QUANTITY, product.getQuantity());
-            row.set(PRODUCTDETAILS.SIZE, product.getSize());
+            setRow(row, product);
             ORG_DATA_STORE.addRow(row);
         }
+    }
+
+    /**
+     * Sets data into the row.
+     *
+     * @param row
+     * @param product
+     */
+    private void setRow(final Row row, final Product product) {
+        row.set(PRODUCTDETAILS.PRODUCTNAME, product.getProductName());
+        row.set(PRODUCTDETAILS.PRICE, product.getPrice());
+        row.set(PRODUCTDETAILS.QUANTITY, product.getQuantity());
+        row.set(PRODUCTDETAILS.SIZE, product.getSize());
     }
 
     /**
@@ -92,10 +101,7 @@ public class ProductManager implements ConfigManager<Product> {
         final Row row = new Row(TABLE, product.id());
 
         if (exists(product)) {
-            row.set(PRODUCTDETAILS.PRODUCTNAME, product.getProductName());
-            row.set(PRODUCTDETAILS.PRICE, product.getPrice());
-            row.set(PRODUCTDETAILS.QUANTITY, product.getQuantity());
-            row.set(PRODUCTDETAILS.SIZE, product.getSize());
+            setRow(row, product);
             dataContainer.updateRow(row);
             ORG_DATA_STORE.commitChanges(dataContainer);
         } else {

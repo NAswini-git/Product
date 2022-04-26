@@ -50,7 +50,7 @@ public class ProductManagement extends CrmConfigAction<Product> {
 
         final Product product = new Product(id, productName, price, size, quantity);
 
-        if (type.equals("create") || type.equals("update")) {
+        if ("create".equals(type) || "update".equals(type)) {
             InputValidator.validateInput(product, getGroups(type));
         }
         return product;
@@ -63,7 +63,7 @@ public class ProductManagement extends CrmConfigAction<Product> {
      */
     private Class getGroups(final String type) {
 
-        if (type.equals("create")) {
+        if ("create".equals(type)) {
             return Create.class;
         } else {
             return Update.class;
@@ -107,7 +107,7 @@ public class ProductManagement extends CrmConfigAction<Product> {
 
             final Product product = new Product(id, productName, price, size, quantity);
 
-            if (type.equals("create") || type.equals("update")) {
+            if ("create".equals(type) || "update".equals(type)) {
 
                 try {
                     InputValidator.validateInput(product, getGroups(type));
