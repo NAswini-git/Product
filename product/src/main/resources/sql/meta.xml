@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<metadata>
+
+    <module name = "module_crm_product">
+
+        <table name = "ProductDetails">
+            <columns>
+                <column name="ID" data-type="BIGINT" />
+                <column name ="PRODUCTNAME" data-type="CHAR" nullable="false"/>
+                <column name ="SIZE" data-type="TEXT" nullable="false" />
+                <column name ="PRICE" data-type="INTEGER" nullable="false"/>
+                <column name ="QUANTITY" data-type="INTEGER" nullable="false"/>
+            </columns>
+            <primary-key name="ProductDetails_PK" column="ID" sequence-generator="ProductDetails.ID"  />
+        </table>
+
+        <table name = "Users">
+            <columns>
+            <column name="ID" data-type="BIGINT" />
+            <column name ="NAME" data-type="CHAR" nullable="false"/>
+            <column name="ORG_ID" data-type="BIGINT" nullable="false"/>
+            </columns>
+            <primary-key name="Users_PK" column="ID" sequence-generator="Users.ID" />
+        </table>
+
+    </module>
+</metadata>
